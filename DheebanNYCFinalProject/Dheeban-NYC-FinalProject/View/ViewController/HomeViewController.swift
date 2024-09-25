@@ -32,12 +32,13 @@ class HomeViewController: UIViewController {
         return imageView
     }()
     
-    private let button: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("NYCSchoolList", for: .normal)
-        button.backgroundColor = .darkGray
+    // Declare the button correctly as a property of the class
+    private let navigateButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("NYC School List", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.layer.cornerRadius = 8
+        button.backgroundColor = .systemBlue
+        button.layer.cornerRadius = 10
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -69,10 +70,10 @@ class HomeViewController: UIViewController {
         // Add the welcome label, image view, and button
         view.addSubview(welcomeLabel)
         view.addSubview(schoolImageView)
-        view.addSubview(button)
+        view.addSubview(navigateButton)
         view.addSubview(activityIndicator)
         
-        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        navigateButton.addTarget(self, action: #selector(navigateButtonTapped), for: .touchUpInside)
         
         // Layout constraints for welcomeLabel, schoolImageView, and button
         NSLayoutConstraint.activate([
@@ -84,13 +85,13 @@ class HomeViewController: UIViewController {
             schoolImageView.widthAnchor.constraint(equalToConstant: 200),
             schoolImageView.heightAnchor.constraint(equalToConstant: 200),
             
-            button.topAnchor.constraint(equalTo: schoolImageView.bottomAnchor, constant: 40),
-            button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            button.widthAnchor.constraint(equalToConstant: 200),
-            button.heightAnchor.constraint(equalToConstant: 50),
+            navigateButton.topAnchor.constraint(equalTo: schoolImageView.bottomAnchor, constant: 40),
+            navigateButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            navigateButton.widthAnchor.constraint(equalToConstant: 200),
+            navigateButton.heightAnchor.constraint(equalToConstant: 50),
             
             activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            activityIndicator.topAnchor.constraint(equalTo: button.bottomAnchor, constant: 20)
+            activityIndicator.topAnchor.constraint(equalTo: navigateButton.bottomAnchor, constant: 20)
         ])
     }
     
@@ -101,20 +102,19 @@ class HomeViewController: UIViewController {
             .sink { [weak self] isLoading in
                 if isLoading {
                     self?.activityIndicator.startAnimating()
-                    self?.button.isEnabled = false
+                    self?.navigateButton.isEnabled = false
                 } else {
                     self?.activityIndicator.stopAnimating()
-                    self?.button.isEnabled = true
+                    self?.navigateButton.isEnabled = true
                 }
             }
             .store(in: &cancellables)
     }
     
-    @objc private func buttonTapped() {
-        // When the button is tapped, trigger the API call and wait for completion
+    @objc private func navigateButtonTapped() {
         viewModel.fetchData { [weak self] in
-            // Once the data is fetched, navigate to the school list
-            self?.coordinator?.showSchoolList()
+            // Once data is fetched, navigate to school list screen
+            self?.viewModel.navigateToSchoolList()
         }
     }
 }

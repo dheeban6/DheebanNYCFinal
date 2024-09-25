@@ -17,15 +17,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Initialize window and AppCoordinator
         window = UIWindow(windowScene: windowScene)
-        appCoordinator = AppCoordinator(window: window!)
+        let navigationController = UINavigationController()
+        window?.rootViewController = navigationController
+        window?.makeKeyAndVisible()
         
-        // Start the coordinator which should show the Home screen
+        appCoordinator = AppCoordinator(navigationController: navigationController)
         appCoordinator?.start()
     }
-
-    func sceneDidDisconnect(_ scene: UIScene) {}
-    func sceneDidBecomeActive(_ scene: UIScene) {}
-    func sceneWillResignActive(_ scene: UIScene) {}
-    func sceneWillEnterForeground(_ scene: UIScene) {}
-    func sceneDidEnterBackground(_ scene: UIScene) {}
 }

@@ -34,7 +34,6 @@ class SchoolListViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         bindViewModel()
-        viewModel.fetchSchoolsAndSATDetails()
     }
     
     private func setupUI() {

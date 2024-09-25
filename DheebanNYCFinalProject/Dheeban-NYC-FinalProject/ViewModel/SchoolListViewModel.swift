@@ -8,35 +8,20 @@
 import Foundation
 import Combine
 
+import Foundation
+import Combine
+
 class SchoolListViewModel {
-    private var schoolService: NYCSchoolServiceProtocol
     @Published var schools: [NYCSchoolModel] = []
     var satDetailsList: [NYCSchoolSATModel] = []
     var allSchools: [NYCSchoolModel] = []
-    private var cancellables = Set<AnyCancellable>()
-    
-    init(schoolService: NYCSchoolServiceProtocol = NYCSchoolService()) {
-        self.schoolService = schoolService
+
+    // Accept data passed from HomeViewModel
+    init(schools: [NYCSchoolModel], satDetails: [NYCSchoolSATModel]) {
+        self.allSchools = schools
+        self.schools = schools
+        self.satDetailsList = satDetails
     }
-    
-    // Fetch both the school list and SAT details
-        func fetchSchoolsAndSATDetails() {
-            let schoolPublisher = schoolService.fetchSchoolList()
-            let satPublisher = schoolService.fetchSATDetails()
-            
-            Publishers.Zip(schoolPublisher, satPublisher)
-                .receive(on: DispatchQueue.main)
-                .sink(receiveCompletion: { completion in
-                    if case .failure(let error) = completion {
-                        print("Error fetching data: \(error)")
-                    }
-                }, receiveValue: { [weak self] schools, satDetails in
-                    self?.allSchools = schools // Store the full list of schools
-                    self?.schools = schools
-                    self?.satDetailsList = satDetails
-                })
-                .store(in: &cancellables)
-        }
     
     func numberOfSchools() -> Int {
         return schools.count
@@ -54,7 +39,6 @@ class SchoolListViewModel {
     func filterSchools(by searchText: String) {
         if searchText.isEmpty {
             schools = allSchools
-            
         } else {
             schools = allSchools.filter { $0.school_name.localizedCaseInsensitiveContains(searchText) }
         }

@@ -7,34 +7,27 @@
 
 import UIKit
 
-protocol Coordinator {
-    func start()
-}
+class AppCoordinator {
+    private let navigationController: UINavigationController
+    private var homeViewModel: HomeViewModel
 
-class AppCoordinator: Coordinator {
-    private let window: UIWindow
-    private var schoolListCoordinator: SchoolListCoordinator?
-    
-    init(window: UIWindow) {
-        self.window = window
+    init(navigationController: UINavigationController) {
+        self.navigationController = navigationController
+        self.homeViewModel = HomeViewModel()
+        self.homeViewModel.coordinator = self
     }
-    
+
     func start() {
-        let homeViewModel = HomeViewModel()
-        let homeVC = HomeViewController(viewModel: homeViewModel)
-        homeVC.coordinator = self
-        
-        let navController = UINavigationController(rootViewController: homeVC)
-        window.rootViewController = navController
-        window.makeKeyAndVisible()
+        let homeViewController = HomeViewController(viewModel: homeViewModel)
+        navigationController.pushViewController(homeViewController, animated: true)
     }
-    
-    func showSchoolList() {
-        let navigationController = UINavigationController()
-        schoolListCoordinator = SchoolListCoordinator(navigationController: navigationController)
-        schoolListCoordinator?.start()
-        
-        // Switch from HomeViewController to SchoolListViewController
-        window.rootViewController = navigationController
-    }
+    func navigateToSchoolList(schools: [NYCSchoolModel], satDetails: [NYCSchoolSATModel]) {
+            // Navigate to SchoolListViewController
+            let schoolListCoordinator = SchoolListCoordinator(
+                navigationController: self.navigationController,
+                schools: schools,
+                satDetails: satDetails
+            )
+            schoolListCoordinator.start()
+        }
 }

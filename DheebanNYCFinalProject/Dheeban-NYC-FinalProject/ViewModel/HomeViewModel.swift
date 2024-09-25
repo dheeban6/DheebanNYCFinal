@@ -8,11 +8,18 @@
 import Foundation
 import Combine
 
+import Foundation
+import Combine
+
 class HomeViewModel {
     private let schoolService: NYCSchoolServiceProtocol
     private var cancellables = Set<AnyCancellable>()
     @Published var isLoading = false
-    
+    var coordinator: AppCoordinator?
+    // Store fetched data to be passed to SchoolListViewModel
+    var fetchedSchools: [NYCSchoolModel] = []
+    var fetchedSATDetails: [NYCSchoolSATModel] = []
+
     init(schoolService: NYCSchoolServiceProtocol = NYCSchoolService()) {
         self.schoolService = schoolService
     }
@@ -32,11 +39,16 @@ class HomeViewModel {
                     print("Error: \(error)")
                 } else {
                     // Data fetched successfully
-                    completion()  // Navigate to school list
+                    completion()  // Notify the coordinator to navigate to school list
                 }
-            }, receiveValue: { schools, sats in
-                // You can handle the fetched data here if needed
+            }, receiveValue: { [weak self] schools, sats in
+                self?.fetchedSchools = schools    // Store fetched schools
+                self?.fetchedSATDetails = sats    // Store fetched SAT data
             })
             .store(in: &cancellables)
+    }
+    // Use this method to trigger navigation when needed
+    func navigateToSchoolList() {
+        coordinator?.navigateToSchoolList(schools: fetchedSchools, satDetails: fetchedSATDetails)
     }
 }
