@@ -27,6 +27,11 @@
 		2AA48CFC2CA3B81300F3A1C0 /* SchoolListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA48CFB2CA3B81300F3A1C0 /* SchoolListViewModelTests.swift */; };
 		2AA48CFE2CA3B8E600F3A1C0 /* MockNYCSchoolService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA48CFD2CA3B8E600F3A1C0 /* MockNYCSchoolService.swift */; };
 		2AA48D002CA3B92700F3A1C0 /* NYCSchoolServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA48CFF2CA3B92700F3A1C0 /* NYCSchoolServiceTests.swift */; };
+		2AA48D442CCA048100F3A1C0 /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA48D432CCA048100F3A1C0 /* HomeViewModelTests.swift */; };
+		2AA48D462CCA04BE00F3A1C0 /* NYCSchoolDataProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA48D452CCA04BE00F3A1C0 /* NYCSchoolDataProviderTests.swift */; };
+		2AA48D492CCA095600F3A1C0 /* NYCSchoolDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA48D482CCA095600F3A1C0 /* NYCSchoolDataProvider.swift */; };
+		2AA48D4B2CCA0C6100F3A1C0 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA48D4A2CCA0C6100F3A1C0 /* Coordinator.swift */; };
+		2AA48D4D2CCA0D0800F3A1C0 /* SchoolDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA48D4C2CCA0D0800F3A1C0 /* SchoolDetailViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +68,11 @@
 		2AA48CFB2CA3B81300F3A1C0 /* SchoolListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolListViewModelTests.swift; sourceTree = "<group>"; };
 		2AA48CFD2CA3B8E600F3A1C0 /* MockNYCSchoolService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNYCSchoolService.swift; sourceTree = "<group>"; };
 		2AA48CFF2CA3B92700F3A1C0 /* NYCSchoolServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYCSchoolServiceTests.swift; sourceTree = "<group>"; };
+		2AA48D432CCA048100F3A1C0 /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
+		2AA48D452CCA04BE00F3A1C0 /* NYCSchoolDataProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYCSchoolDataProviderTests.swift; sourceTree = "<group>"; };
+		2AA48D482CCA095600F3A1C0 /* NYCSchoolDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYCSchoolDataProvider.swift; sourceTree = "<group>"; };
+		2AA48D4A2CCA0C6100F3A1C0 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		2AA48D4C2CCA0D0800F3A1C0 /* SchoolDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolDetailViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,9 +116,10 @@
 			children = (
 				2AA48CE42CA1F41E00F3A1C0 /* Controller */,
 				2AA48CDF2CA1F3DE00F3A1C0 /* Coordinator */,
-				2AA48CD92CA1F33700F3A1C0 /* View */,
-				2AA48CD42CA1F2E300F3A1C0 /* ViewModel */,
+				2AA48D472CCA08E700F3A1C0 /* Services */,
 				2AA48CCD2CA1F24E00F3A1C0 /* Model */,
+				2AA48CD42CA1F2E300F3A1C0 /* ViewModel */,
+				2AA48CD92CA1F33700F3A1C0 /* View */,
 				2AA48CBF2CA1F23C00F3A1C0 /* Main.storyboard */,
 				2AA48CC22CA1F23D00F3A1C0 /* Assets.xcassets */,
 				2AA48CC42CA1F23D00F3A1C0 /* LaunchScreen.storyboard */,
@@ -122,7 +133,6 @@
 			children = (
 				2AA48CCE2CA1F26200F3A1C0 /* NYCSchoolModel.swift */,
 				2AA48CD02CA1F27F00F3A1C0 /* NYCSchoolSATModel.swift */,
-				2AA48CD22CA1F2A400F3A1C0 /* NYCSchoolService.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -161,6 +171,7 @@
 			children = (
 				2AA48CE02CA1F3ED00F3A1C0 /* AppCoordinator.swift */,
 				2AA48CE22CA1F40700F3A1C0 /* SchoolListCoordinator.swift */,
+				2AA48D4A2CCA0C6100F3A1C0 /* Coordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -180,8 +191,20 @@
 				2AA48CFB2CA3B81300F3A1C0 /* SchoolListViewModelTests.swift */,
 				2AA48CFD2CA3B8E600F3A1C0 /* MockNYCSchoolService.swift */,
 				2AA48CFF2CA3B92700F3A1C0 /* NYCSchoolServiceTests.swift */,
+				2AA48D432CCA048100F3A1C0 /* HomeViewModelTests.swift */,
+				2AA48D452CCA04BE00F3A1C0 /* NYCSchoolDataProviderTests.swift */,
+				2AA48D4C2CCA0D0800F3A1C0 /* SchoolDetailViewModelTests.swift */,
 			);
 			path = DheebanNYCFinalProjectTests;
+			sourceTree = "<group>";
+		};
+		2AA48D472CCA08E700F3A1C0 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				2AA48CD22CA1F2A400F3A1C0 /* NYCSchoolService.swift */,
+				2AA48D482CCA095600F3A1C0 /* NYCSchoolDataProvider.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,6 +309,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2AA48D4B2CCA0C6100F3A1C0 /* Coordinator.swift in Sources */,
+				2AA48D492CCA095600F3A1C0 /* NYCSchoolDataProvider.swift in Sources */,
 				2AA48CE12CA1F3ED00F3A1C0 /* AppCoordinator.swift in Sources */,
 				2AA48CBA2CA1F23C00F3A1C0 /* AppDelegate.swift in Sources */,
 				2AA48CD62CA1F2FD00F3A1C0 /* SchoolListViewModel.swift in Sources */,
@@ -309,7 +334,10 @@
 			files = (
 				2AA48D002CA3B92700F3A1C0 /* NYCSchoolServiceTests.swift in Sources */,
 				2AA48CFE2CA3B8E600F3A1C0 /* MockNYCSchoolService.swift in Sources */,
+				2AA48D4D2CCA0D0800F3A1C0 /* SchoolDetailViewModelTests.swift in Sources */,
 				2AA48CFC2CA3B81300F3A1C0 /* SchoolListViewModelTests.swift in Sources */,
+				2AA48D442CCA048100F3A1C0 /* HomeViewModelTests.swift in Sources */,
+				2AA48D462CCA04BE00F3A1C0 /* NYCSchoolDataProviderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

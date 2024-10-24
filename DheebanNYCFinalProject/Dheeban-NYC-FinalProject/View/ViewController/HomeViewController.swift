@@ -9,9 +9,8 @@ import UIKit
 import Combine
 
 class HomeViewController: UIViewController {
-    
-    private let viewModel: HomeViewModel
     var coordinator: AppCoordinator?
+    private var viewModel = HomeViewModel()
     private var cancellables = Set<AnyCancellable>()
     
     private let welcomeLabel: UILabel = {
@@ -32,7 +31,6 @@ class HomeViewController: UIViewController {
         return imageView
     }()
     
-    // Declare the button correctly as a property of the class
     private let navigateButton: UIButton = {
         let button = UIButton()
         button.setTitle("NYC School List", for: .normal)
@@ -49,15 +47,6 @@ class HomeViewController: UIViewController {
         return indicator
     }()
     
-    init(viewModel: HomeViewModel) {
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -67,7 +56,6 @@ class HomeViewController: UIViewController {
     private func setupUI() {
         view.backgroundColor = .white
         
-        // Add the welcome label, image view, and button
         view.addSubview(welcomeLabel)
         view.addSubview(schoolImageView)
         view.addSubview(navigateButton)
@@ -75,7 +63,6 @@ class HomeViewController: UIViewController {
         
         navigateButton.addTarget(self, action: #selector(navigateButtonTapped), for: .touchUpInside)
         
-        // Layout constraints for welcomeLabel, schoolImageView, and button
         NSLayoutConstraint.activate([
             welcomeLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 60),
             welcomeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -96,25 +83,23 @@ class HomeViewController: UIViewController {
     }
     
     private func bindViewModel() {
-        // Bind the loading state to the activity indicator
-        viewModel.$isLoading
-            .receive(on: RunLoop.main)
-            .sink { [weak self] isLoading in
-                if isLoading {
-                    self?.activityIndicator.startAnimating()
-                    self?.navigateButton.isEnabled = false
-                } else {
-                    self?.activityIndicator.stopAnimating()
-                    self?.navigateButton.isEnabled = true
-                }
-            }
-            .store(in: &cancellables)
-    }
+           viewModel.$isLoading
+               .receive(on: RunLoop.main)
+               .sink { [weak self] isLoading in
+                   if isLoading {
+                       self?.activityIndicator.startAnimating()
+                       self?.navigateButton.isEnabled = false
+                   } else {
+                       self?.activityIndicator.stopAnimating()
+                       self?.navigateButton.isEnabled = true
+                   }
+               }
+               .store(in: &cancellables)
+       }
     
     @objc private func navigateButtonTapped() {
-        viewModel.fetchData { [weak self] in
-            // Once data is fetched, navigate to school list screen
-            self?.viewModel.navigateToSchoolList()
+        viewModel.fetchData {
+            self.coordinator?.navigateToSchoolList()
         }
     }
 }

@@ -18,10 +18,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Initialize window and AppCoordinator
         window = UIWindow(windowScene: windowScene)
         let navigationController = UINavigationController()
+        appCoordinator = AppCoordinator(navigationController: navigationController)
+
+        // Set the root view controller and make the window visible
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
-        
-        appCoordinator = AppCoordinator(navigationController: navigationController)
+
+        // Start the app flow
         appCoordinator?.start()
     }
 }
