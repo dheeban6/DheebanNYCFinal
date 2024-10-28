@@ -11,7 +11,7 @@ import Combine
 class SchoolListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var schools: [NYCSchoolModel] = []
-    var coordinator: SchoolListCoordinator? // Add this property
+    var coordinator: SchoolListCoordinator?
     private var tableView = UITableView()
     private var cancellables = Set<AnyCancellable>()
     
@@ -105,7 +105,6 @@ class SchoolListViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard indexPath.row < schools.count else {
-            // If the index is out of range, return an empty UITableViewCell
             return UITableViewCell()
         }
         

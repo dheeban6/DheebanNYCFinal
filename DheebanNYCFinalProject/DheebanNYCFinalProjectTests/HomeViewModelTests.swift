@@ -37,7 +37,7 @@ class HomeViewModelTests: XCTestCase {
                 if !schools.isEmpty && !satDetails.isEmpty {
                     XCTAssertFalse(schools.isEmpty, "Fetched schools should not be empty")
                     XCTAssertFalse(satDetails.isEmpty, "Fetched SAT details should not be empty")
-                    expectation.fulfill() // Fulfill the expectation
+                    expectation.fulfill()
                 }
             })
             .store(in: &cancellables)

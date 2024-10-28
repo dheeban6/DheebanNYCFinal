@@ -3,14 +3,6 @@
 //  Dheeban-NYC-FinalProject
 //
 //  Created by Dheeban Jaga on 9/23/24.
-//
-
-//
-//  SchoolListViewModel.swift
-//  Dheeban-NYC-FinalProject
-//
-//  Created by Dheeban Jaga on 9/23/24.
-//
 
 import Foundation
 import Combine

@@ -3,14 +3,6 @@
 //  Dheeban-NYC-FinalProject
 //
 //  Created by Dheeban Jaga on 9/23/24.
-//
-
-//
-//  HomeViewModel.swift
-//  Dheeban-NYC-FinalProject
-//
-//  Created by Dheeban Jaga on 9/23/24.
-//
 
 import Foundation
 import Combine
@@ -31,6 +23,6 @@ class HomeViewModel {
     
     // Navigation to school list
     func navigateToSchoolList() {
-        coordinator?.navigateToSchoolList()  // No arguments required as data is accessed via the data provider
+        coordinator?.navigateToSchoolList()
     }
 }

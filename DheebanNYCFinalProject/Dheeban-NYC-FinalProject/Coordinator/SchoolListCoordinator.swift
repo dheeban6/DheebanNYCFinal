@@ -18,7 +18,7 @@ class SchoolListCoordinator: Coordinator {
 
     func start() {
         let schoolListViewController = SchoolListViewController()
-        schoolListViewController.coordinator = self // Set the coordinator
+        schoolListViewController.coordinator = self
         navigationController.pushViewController(schoolListViewController, animated: true)
     }
 

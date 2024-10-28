@@ -25,7 +25,7 @@ class HomeViewController: UIViewController {
     
     private let schoolImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "nycSchoolImage") // Add this image to your assets
+        imageView.image = UIImage(named: "nycSchoolImage")
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView

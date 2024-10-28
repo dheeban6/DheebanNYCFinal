@@ -30,7 +30,7 @@ class NYCSchoolServiceTests: XCTestCase {
                     XCTFail("Failed to fetch school list: \(error)")
                 }
             }, receiveValue: { schools in
-                XCTAssertGreaterThan(schools.count, 0) // Ensure we got some data
+                XCTAssertGreaterThan(schools.count, 0)
                 expectation.fulfill()
             })
         
@@ -48,7 +48,7 @@ class NYCSchoolServiceTests: XCTestCase {
                     XCTFail("Failed to fetch SAT details: \(error)")
                 }
             }, receiveValue: { satDetails in
-                XCTAssertGreaterThan(satDetails.count, 0) // Ensure we got some data
+                XCTAssertGreaterThan(satDetails.count, 0)
                 expectation.fulfill()
             })
         

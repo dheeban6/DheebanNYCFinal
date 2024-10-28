@@ -13,7 +13,7 @@ class SchoolDetailViewModelTests: XCTestCase {
     var viewModel: SchoolDetailViewModel!
     var mockService: MockNYCSchoolService!
     var mockSchool: NYCSchoolModel!
-    var cancellables: Set<AnyCancellable> = [] // Initialize the cancellables set
+    var cancellables: Set<AnyCancellable> = []
     
     override func setUp() {
         super.setUp()
@@ -40,7 +40,7 @@ class SchoolDetailViewModelTests: XCTestCase {
         viewModel = nil
         mockService = nil
         mockSchool = nil
-        cancellables.removeAll() // Clear cancellables
+        cancellables.removeAll()
         super.tearDown()
     }
 

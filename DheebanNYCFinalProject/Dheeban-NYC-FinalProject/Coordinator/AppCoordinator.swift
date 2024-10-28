@@ -17,7 +17,7 @@ class AppCoordinator {
     }
 
     func start() {
-        let homeViewController = HomeViewController() // No arguments passed
+        let homeViewController = HomeViewController()
         homeViewController.coordinator = self
         navigationController.pushViewController(homeViewController, animated: true)
     }
